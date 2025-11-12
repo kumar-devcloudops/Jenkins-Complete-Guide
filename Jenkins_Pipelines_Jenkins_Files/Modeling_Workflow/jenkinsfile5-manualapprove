@@ -12,6 +12,7 @@ pipeline {
             steps {
                 echo "Building release ${RELEASE} with log level ${LOG_LEVEL}..."
             }
+        }
             stage ('deploy approval') {
                 input {
                     message 'Approve Deployment?'
@@ -21,17 +22,11 @@ pipeline {
                     }
                 }
             }
-            post {
-                always {
-                    echo 'This will always run after the deploy approval stage.'
-                }
-                sucess {
-                    echo "Deploying release ${RELEASE} to environment ${DEPLOY_ENV}"
-                }
-                aborted {
-                    echo "Deployment aborted. Release ${RELEASE} will not be deployed."
-                }
-            }
+        }
+    post {
+        always {
+             echo 'This will run after the stages are complete, regardless of success or failure.'
         }
     }
 }
+
