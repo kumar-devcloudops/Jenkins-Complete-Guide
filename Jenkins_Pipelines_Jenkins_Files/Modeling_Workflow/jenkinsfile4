@@ -1,0 +1,14 @@
+pipeline {
+    agent any
+    parameters {
+        string(name: 'BRANCH_NAME', defaultValue: 'main', description: 'Branch to build')
+    }
+    stages {
+        stage ('checkout') {
+            step {
+                echo "checking out branch: ${params.BRANCH_NAME} "
+            }
+        }
+    }
+
+}
