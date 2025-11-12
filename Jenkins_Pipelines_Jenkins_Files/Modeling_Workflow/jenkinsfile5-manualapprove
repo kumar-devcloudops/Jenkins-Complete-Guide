@@ -25,6 +25,7 @@ pipeline {
                 echo "Deploying release ${RELEASE} to environment ${DEPLOY_ENV} "
             }
         }
+}
     post {
         always {
              echo 'This will run after the stages are complete, regardless of success or failure.'
